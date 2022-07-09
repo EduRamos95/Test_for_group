@@ -6,20 +6,20 @@
  *
  * Return: pointer to valid function or NULL
  */
-unsigned int (*Control_Spec(const char *format))(va_list name_list)
+static int (*Control_Spec(const char *format))(va_list)
 {
-	unsigned int i; // index of Spec
+	unsigned int i; 
 	Specifier_t Spec[] = {
-		{"c", print_c},
-		{"s", print_s},
-		{"\0", NULL} // '\0' always in last field
+		{"c", print_char},
+		{"s", print_string},
+		{"\0", NULL}
 	}; 
 
-	for (i = 0; Spec[i].option != NULL; i++) // find Spec
+	for (i = 0; Spec[i].option != NULL; i++) 
 	{
-		if (Spec[i].option == *format)
+		if (*(Spec[i].option) == *format)
 		{
-            return (Spec[i].op_func); // return pointer to function
+            return (Spec[i].op_func); 
 		}
 	}
 	return (NULL);
@@ -33,40 +33,40 @@ unsigned int (*Control_Spec(const char *format))(va_list name_list)
  */
 int _printf(const char *format, ...)
 {
-	unsigned int i, count; // index to format, counter of the string to be printed
-	va_list var_parameter; // assign a name
-	int (*f)(va_list);     // function pointer
+	unsigned int i, count; 
+	va_list var_parameter; 
+	int (*f)(va_list);     
 
-	if (format == NULL) // if format doesn't exist
-		return (-1);    // error
-	va_start(var_parameter, format); // stars the var_list args
+	if (format == NULL) 
+		return (-1);    
+	va_start(var_parameter, format); 
     i = 0;
     count = 0;
-	while (format[i] != '\0') // compare string with null character
+	while (format[i] != '\0') 
 	{
 		for (i; format[i] != '%' && format[i] != '\0'; i++) 
 		{
-			_putchar(format[i]); //print string
+			_putchar(format[i]); 
 			count++;
 		}
-		if (!format[i]) // if format finish
-			return (count); // return the length of the string to be printed
-		f = Control_Spec(&format[i + 1]); // to point a function specifier
-		if (f != NULL) // if function exists
+		if (!format[i]) 
+			return (count); 
+		f = Control_Spec(&format[i + 1]); 
+		if (f != NULL) 
 		{
-			count += f(var_parameter); // store the length of the printed var_parameter 
-			i += 2; // increment to skip '%S' percent and specifier
-			continue; // next iteration
+			count += f(var_parameter); 
+			i += 2; 
+			continue; 
 		}
 		if (!format[i + 1]) 
 			return (-1);
-		_putchar(format[i]); // print '%'
-		count++; //increment when a character was printed
+		_putchar(format[i]); 
+		count++; 
 		if (format[i + 1] == '%')
-			i += 2; // increment to skip '%%'
+			i += 2; 
 		else
-			i++; // increment to next position
+			i++; 
 	}
-	va_end(valist); // ends the var_list args
+	va_end(var_parameter); 
 	return (count);
 }
