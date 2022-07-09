@@ -1,21 +1,23 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef HEADER_FILE
+#define HEADER_FILE
 
 #include <stdio.h>
 #include <unistd.h>
-#include <stdarg.h>
 #include <stdlib.h>
+#include <stdarg.h>
+
+typedef struct spec Specifier_t;
 
 /**
- * struct print - structure for printing various types
- * @t: type to print
+ * struct spec - structure to choose the specifier option
+ * @op: type to print
  * @f: function to print
  */
-typedef struct Struct_Spec
+struct spec
 {
-	char *option;
-	int (*op_func)(va_list);
-} Specifier_t;
+        char *op;
+        int (*f)(va_list);
+};
 
 int _putchar(char c);
 int _printf(const char *format, ...);
