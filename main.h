@@ -20,4 +20,8 @@ typedef struct Struct_Spec
 int _putchar(char c);
 int _printf(const char *format, ...);
 
+/* Functions inside functions.c */
+int print_char(va_list c);
+int print_string(va_list s);
+
 #endif
