@@ -19,7 +19,7 @@ static int (*Control_Spec(const char *format))(va_list)
 	{
 		if (*(Spec[i].op) == *format)
 		{
-            return (Spec[i].f);
+			return (Spec[i].f);
 		}
 	}
 	return (NULL);
@@ -27,7 +27,7 @@ static int (*Control_Spec(const char *format))(va_list)
 
 /**
  * _printf - prints a string with optional directives
- * @format: string to print 
+ * @format: string to print
  *
  * Return: number of characters printed
  */
@@ -40,8 +40,8 @@ int _printf(const char *format, ...)
 	if (format == NULL)
 		return (-1);
 	va_start(var_parameter, format);
-    i = 0;
-    count = 0;
+	i = 0;
+	count = 0;
 	while (format[i] != '\0')
 	{
 		for (; format[i] != '%' && format[i] != '\0'; i++)
