@@ -1,5 +1,5 @@
 <p align="center">
-  <img  src="https://blog.holbertonschool.com/wp-content/uploads/2015/09/holberton-logo-71243d031b1b54a2a59a7ce700d2529fd8ad14864799073da29569fb8d4b89251.png">
+  <img  src="https://ml.globenewswire.com/Resource/Download/a08e6c28-55be-44c8-8461-03544f094b38">
 </p>
 
 
