@@ -71,4 +71,5 @@ Compiled with :  `gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c
 
 ## Authors
 [Edu Ramos](https://github.com/EduRamos95)
+
 [Kevin Espinoza](https://github.com/KevinYeff)
