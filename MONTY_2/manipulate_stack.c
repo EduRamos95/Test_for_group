@@ -1,3 +1,4 @@
+#include "monty.h"
 /**
  * check_for_digit - checks that a string only contains digits
  * @arg: string to check
@@ -25,12 +26,12 @@ static int check_for_digit(char *arg)
  *
  * Return: void
  */
-void _push(stack_t **stack, char *value, unsigned int line_number)
+void _push(stack_t **stack, unsigned int line_number)
 {
 	char *arg;
 	int n;
 
-	arg = value;
+	arg = strtok(NULL, "\n\t\r ");
 	if (arg == NULL || check_for_digit(arg))
 	{
 		dprintf(STDOUT_FILENO,
@@ -45,4 +46,108 @@ void _push(stack_t **stack, char *value, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	var.stack_len++;
+}
+
+/**
+  * print_dlistint - prints a doubly linked list
+  * @h: Head of the list
+  */
+void print_stack_t(stack_t *head)
+{
+    size_t i;
+    stack_t *ptr;
+
+	if (head == NULL)
+		return;
+    ptr = head;
+    while (ptr->next != NULL)
+        ptr = ptr->next;
+    /*ubicacion en top*/
+    /*i : cuenta elementos*/
+    for (i = 0; ptr; i++)
+    {
+        printf("%d\n", ptr->n);
+        ptr = ptr->prev;
+    }
+}
+
+void _pall(stack_t **stack, unsigned int line_number __attribute__((unused)))
+{
+    stack_t *print_all;
+    
+    print_all = *stack;
+    print_stack_t(print_all);
+}
+
+void _pint(stack_t **stack, unsigned int line_number __attribute__((unused)))
+{
+    stack_t *ptr;
+    ptr = *stack;
+
+    while (ptr->next != NULL)
+        ptr = ptr->next;
+
+    printf("%d\n", ptr->n);
+}
+
+void _pop(stack_t **stack, unsigned int line_number __attribute__((unused)))
+{
+    stack_t *ptr;
+    ptr = *stack;
+
+    while (ptr->next != NULL)
+        ptr = ptr->next;
+    /*elemento final*/
+    (ptr->prev)->next = NULL;
+    free(ptr);
+}
+
+void _swap(stack_t **stack, unsigned int line_number __attribute__((unused)))
+{
+    stack_t *ptr = NULL;
+    stack_t *tmp_1 = NULL;
+    int num1 = 0;
+    int num2 = 0;
+
+    ptr = *stack;
+
+    while (ptr->next != NULL)
+        ptr = ptr->next;
+
+    tmp_1 = ptr->prev;
+    
+    num1 = ptr->n;
+    num2 = tmp_1->n;
+
+    ptr->n = num2;
+    tmp_1->n = num1;
+}
+
+void _add(stack_t **stack, unsigned int line_number __attribute__((unused)))
+{
+    stack_t *ptr = NULL;
+    stack_t *tmp_1 = NULL;
+    int num1 = 0;
+    int num2 = 0;
+    int sum = 0;
+    ptr = *stack;
+
+    while (ptr->next != NULL)
+        ptr = ptr->next;
+
+    tmp_1 = ptr->prev;
+    
+    num1 = ptr->n;
+    num2 = tmp_1->n;
+    sum = num1 + num2;
+
+    tmp_1->n = sum;
+    tmp_1->next = NULL;
+    free(ptr);
+}
+
+void _nop(stack_t **stack __attribute__((unused)), unsigned int line_number __attribute__((unused)))
+{	
+	printf("::nada::");
+	return;
 }

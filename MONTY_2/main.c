@@ -37,17 +37,23 @@ int main(int argc, char *argv[])
 	/*on_exit(m_fs_close, fs);*/
 	while (getline(&lineptr, &n, fs) != -1)
 	{
+		stack_top = last_node(&stack);
 		line_number++;
 		op = strtok(lineptr, "\n\t\r ");
 		if (op != NULL && op[0] != '#')
 		{
-			get_op(op, &stack, line_number);
+			get_opc(op, &stack_top, line_number);
 		}
-        free(lineptr);
-        n = 0;
-        lineptr = NULL;
+		if(var.stack_len == 1)
+		{
+			stack = stack_top;
+		}
+        /*free(lineptr);*/
+        /*n = 0;*/
+        /*lineptr = NULL;*/
 	}
-    if (!stack)
+	free(lineptr);
+    if (stack != NULL)
     {
         free_stack(stack);
     }
