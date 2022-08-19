@@ -57,6 +57,8 @@ int main(int argc, char *argv[])
 		len2 = 0;
 		mont.line_number++;
 	}
-	free_stack(ptr_stack);
+	if(ptr_stack != NULL)
+		free_stack(ptr_stack);
+	fclose(mont.script);
 	return(0);
 }
