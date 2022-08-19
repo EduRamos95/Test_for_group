@@ -81,4 +81,5 @@ void free_stack(stack_t *head);
 
 void get_opc(char *op, stack_t **stack, unsigned int line_number);
 stack_t *last_node(stack_t **stack);
+stack_t *first_node(stack_t **stack);
 #endif

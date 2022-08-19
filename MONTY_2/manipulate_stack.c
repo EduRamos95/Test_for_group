@@ -103,9 +103,16 @@ void _pop(stack_t **stack, unsigned int line_number __attribute__((unused)))
 	if(ptr->prev != NULL)
 	{
 		tmp = ptr->prev;
+		(*stack) = tmp;
 		tmp->next = NULL;
+		free_stack(ptr);
 	}
-	free_stack(ptr);
+	if ((ptr->prev == NULL) && var.stack_len == 1)
+	{
+		free_stack(ptr);
+		(*stack) = NULL;
+	}
+	
 	var.stack_len--;
 }
 

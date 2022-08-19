@@ -14,6 +14,7 @@ int main(int argc, char *argv[])
 {
 	stack_t *stack = NULL;
     stack_t *stack_top = NULL;
+	stack_t *node = NULL;
 	unsigned int line_number = 0;
 	FILE *fs = NULL;
 	char *lineptr = NULL, *op = NULL;
@@ -44,16 +45,32 @@ int main(int argc, char *argv[])
 		{
 			get_opc(op, &stack_top, line_number);
 		}
+		stack = first_node(&stack_top);
 		if(var.stack_len == 1)
 		{
 			stack = stack_top;
 		}
+		printf("#linea despues cmd:%d\n",line_number);
+		printf("stack:%p\n",(void *)stack);
+		if((stack != NULL) && (var.stack_len >= 3))
+		{
+			node = stack->next;
+			while (node->next != NULL)
+			{	
+				printf("node..:%p\n", (void *)node);
+				node = node->next;
+			}			
+		}
+		
+		printf("s_top:%p\n",(void *)stack_top);
+		printf("#element:%ld\n",var.stack_len);
+		printf("---------------------\n");
         /*free(lineptr);*/
         /*n = 0;*/
         /*lineptr = NULL;*/
 	}
 	free(lineptr);
-    if (stack != NULL)
+    if (stack != NULL || var.stack_len != 0)
     {
         free_stack(stack);
     }
