@@ -93,13 +93,20 @@ void _pint(stack_t **stack, unsigned int line_number __attribute__((unused)))
 void _pop(stack_t **stack, unsigned int line_number __attribute__((unused)))
 {
     stack_t *ptr;
+	stack_t *tmp;
     ptr = *stack;
-
+	if ((*stack == NULL) || (var.stack_len == 0))
+		return;
     while (ptr->next != NULL)
         ptr = ptr->next;
     /*elemento final*/
-    (ptr->prev)->next = NULL;
-    free(ptr);
+	if(ptr->prev != NULL)
+	{
+		tmp = ptr->prev;
+		tmp->next = NULL;
+	}
+	free_stack(ptr);
+	var.stack_len--;
 }
 
 void _swap(stack_t **stack, unsigned int line_number __attribute__((unused)))
@@ -125,25 +132,36 @@ void _swap(stack_t **stack, unsigned int line_number __attribute__((unused)))
 
 void _add(stack_t **stack, unsigned int line_number __attribute__((unused)))
 {
-    stack_t *ptr = NULL;
-    stack_t *tmp_1 = NULL;
-    int num1 = 0;
-    int num2 = 0;
-    int sum = 0;
-    ptr = *stack;
+	stack_t *ptr = NULL;
+	stack_t *tmp_1 = NULL;
+	int num1 = 0;
+	int num2 = 0;
+	int sum = 0;
+	ptr = *stack;
 
-    while (ptr->next != NULL)
-        ptr = ptr->next;
+	if (stack == NULL)
+		return;
 
-    tmp_1 = ptr->prev;
-    
-    num1 = ptr->n;
-    num2 = tmp_1->n;
-    sum = num1 + num2;
+	while (ptr->next != NULL)
+		ptr = ptr->next;
 
-    tmp_1->n = sum;
-    tmp_1->next = NULL;
-    free(ptr);
+	if (var.stack_len >= 2)
+	{
+		tmp_1 = ptr->prev;
+
+		num1 = ptr->n;
+		num2 = tmp_1->n;
+		sum = num1 + num2;
+
+		tmp_1->n = sum;
+		tmp_1->next = NULL;
+		free(ptr);
+		var.stack_len--;
+	}
+	else
+	{
+		return;
+	}
 }
 
 void _nop(stack_t **stack __attribute__((unused)), unsigned int line_number __attribute__((unused)))
