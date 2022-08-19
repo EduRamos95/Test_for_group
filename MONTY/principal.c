@@ -60,5 +60,6 @@ int main(int argc, char *argv[])
 	if(ptr_stack != NULL)
 		free_stack(ptr_stack);
 	fclose(mont.script);
+	mont.script = NULL;
 	return(0);
 }

@@ -13,6 +13,8 @@ void print_stack_t(stack_t *head)
     size_t i;
     stack_t *ptr;
 
+	if (head == NULL)
+		return;
     ptr = head;
     while (ptr->next != NULL)
         ptr = ptr->next;
