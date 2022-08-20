@@ -117,3 +117,36 @@ void _nop(stack_t **stack __attribute__((unused)), unsigned int line_number __at
 	/*printf("::nada::");*/
 	return;
 }
+
+void _pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *ptr;
+	stack_t *tmp;
+
+	if ((stack == NULL) || (*stack == NULL) || (var.stack_len == 0))
+	{
+		fprintf(stderr,"L%u: can't pop an empty stack\n",line_number);
+		free(var.gline);
+		fclose(var.gfs);
+		exit(EXIT_FAILURE);
+	}
+	ptr = *stack;
+
+	while (ptr->next != NULL)
+		ptr = ptr->next;
+
+	if(ptr->prev != NULL)
+	{
+		tmp = ptr->prev;
+		free_stack(ptr);
+		ptr = tmp;
+		ptr->next = NULL;
+	}
+
+	if ((ptr->prev == NULL) && var.stack_len == 1)
+	{
+		free_stack(ptr);
+		(*stack) = NULL;
+	}
+	var.stack_len--;
+}
