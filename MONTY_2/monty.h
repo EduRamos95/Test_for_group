@@ -21,6 +21,8 @@ typedef struct var_s
 {
 	int queue;
 	size_t stack_len;
+	FILE *gfs;
+	char *gline;
 } var_t;
 
 #define STACK 0

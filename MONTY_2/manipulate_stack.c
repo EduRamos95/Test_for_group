@@ -37,12 +37,24 @@ void _push(stack_t **stack, unsigned int line_number)
 		fprintf(stderr,
 			"L%u: usage: push integer\n",
 			line_number);
+		if (*stack != NULL)
+		{
+			free_stack(*stack);
+		}
+		free(var.gline);
+		fclose(var.gfs);
 		exit(EXIT_FAILURE);
 	}
 	n = atoi(arg);
 	if (!add_node_end(stack, n))
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		if (*stack != NULL)
+		{
+			free_stack(*stack);
+		}
+		free(var.gline);
+		fclose(var.gfs);
 		exit(EXIT_FAILURE);
 	}
 	var.stack_len++;
@@ -87,6 +99,8 @@ void _pint(stack_t **stack, unsigned int line_number)
 	if((*stack) == NULL)
 	{
 		fprintf(stderr,"L%u: can't pint, stack empty\n",line_number);
+		free(var.gline);
+		fclose(var.gfs);
 		exit(EXIT_FAILURE);
 	}
 
@@ -104,6 +118,8 @@ void _pop(stack_t **stack, unsigned int line_number)
 	if ((stack == NULL) || (*stack == NULL) || (var.stack_len == 0))
 	{
 		fprintf(stderr,"L%u: can't pop an empty stack\n",line_number);
+		free(var.gline);
+		fclose(var.gfs);
 		exit(EXIT_FAILURE);
 	}
 	ptr = *stack;
@@ -115,7 +131,7 @@ void _pop(stack_t **stack, unsigned int line_number)
 		tmp = ptr->prev;
 		free_stack(ptr);
 		ptr = tmp;
-		tmp->next = NULL;
+		ptr->next = NULL;
 		/*free_stack(ptr);*/
 	}
 	if ((ptr->prev == NULL) && var.stack_len == 1)
@@ -126,10 +142,10 @@ void _pop(stack_t **stack, unsigned int line_number)
 	var.stack_len--;
 }
 
-void _swap(stack_t **stack, unsigned int line_number __attribute__((unused)))
+void _swap(stack_t **stack, unsigned int line_number)
 {
-    stack_t *ptr = NULL;
-    stack_t *tmp_1 = NULL;
+	stack_t *ptr = NULL;
+	stack_t *tmp_1 = NULL;
 	stack_t *tmp_2 = NULL;
     /*int num1 = 0;*/
     /*int num2 = 0;*/
@@ -137,37 +153,66 @@ void _swap(stack_t **stack, unsigned int line_number __attribute__((unused)))
 	if ((*stack == NULL) && (var.stack_len == 0))
 	{
 		fprintf(stderr,"L%u: can't swap, stack too short\n",line_number);
+		free(var.gline);
+		fclose(var.gfs);
 		exit(EXIT_FAILURE);
 	}
 
 	if (((*stack)->next == NULL) && (var.stack_len == 1))
 	{
 		fprintf(stderr,"L%u: can't swap, stack too short\n",line_number);
+		if (*stack != NULL)
+		{
+			free_stack(*stack);
+		}
+		free(var.gline);
+		fclose(var.gfs);
 		exit(EXIT_FAILURE);
 	}
-    ptr = *stack;
+	ptr = *stack;
 
-    while (ptr->next != NULL)
-        ptr = ptr->next;
+	while (ptr->next != NULL)
+		ptr = ptr->next;
 
-    tmp_1 = ptr->prev;
-	tmp_2 = tmp_1->prev;
-	/*ptr -> elemento final*/
-	/*tmp_1 -> elemeto anterior al final*/
+	if (var.stack_len >= 3)
+	{
+		tmp_1 = ptr->prev;
+		tmp_2 = tmp_1->prev;
 
-	tmp_2->next = ptr;
-	ptr->prev = tmp_2;
-	ptr->next = tmp_1;
-	tmp_1->prev = ptr;
-	tmp_1->next = NULL;
-    /**/
-    /*num1 = ptr->n;*/
-    /*num2 = tmp_1->n;*/
+		tmp_2->next = ptr;
+		ptr->prev = tmp_2;
+		ptr->next = tmp_1;
+		tmp_1->prev = ptr;
+		tmp_1->next = NULL;
+	}
+	else
+	{
+		tmp_1 = malloc(sizeof(stack_t));
+		if (tmp_1 == NULL)
+		{
+			tmp_2 = malloc(sizeof(stack_t));
+			if (tmp_2 == NULL)
+			{
+				fprintf(stderr,"error de malloc\n");
+				exit(EXIT_FAILURE);
+			}
+			tmp_1 = tmp_2;
+			tmp_2 = NULL;
+		}
+		tmp_1->prev = (*stack)->prev;
+		tmp_1->next = (*stack);
 
-    /*ptr->n = num2;*/
-    /*tmp_1->n = num1;*/
-	/**/
+		(*stack)->prev = ptr;
+		(*stack)->next = NULL;
 
+		ptr->next = tmp_1->next;
+		ptr->prev = tmp_1->prev;
+
+		tmp_1->next = NULL;
+		free_stack(tmp_1);
+
+		(*stack) = ptr;
+	}
 }
 
 void _add(stack_t **stack, unsigned int line_number __attribute__((unused)))
@@ -182,6 +227,12 @@ void _add(stack_t **stack, unsigned int line_number __attribute__((unused)))
 	if (*stack == NULL || var.stack_len <= 1)
 	{
 		fprintf(stderr,"L%u: can't add, stack too short\n",line_number);
+		if (*stack != NULL)
+		{
+			free_stack(*stack);
+		}
+		free(var.gline);
+		fclose(var.gfs);
 		exit(EXIT_FAILURE);
 	}
 
@@ -204,6 +255,12 @@ void _add(stack_t **stack, unsigned int line_number __attribute__((unused)))
 	else
 	{
 		fprintf(stderr,"L%u: can't add, stack too short\n",line_number);
+		if (*stack != NULL)
+		{
+			free_stack(*stack);
+		}
+		free(var.gline);
+		fclose(var.gfs);
 		exit(EXIT_FAILURE);
 	}
 }
