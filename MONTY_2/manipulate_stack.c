@@ -121,30 +121,51 @@ void _swap(stack_t **stack, unsigned int line_number __attribute__((unused)))
 {
     stack_t *ptr = NULL;
     stack_t *tmp_1 = NULL;
-    int num1 = 0;
-    int num2 = 0;
+	stack_t *tmp_2 = NULL;
+    /*int num1 = 0;*/
+    /*int num2 = 0;*/
 
+	if ((*stack == NULL) && (line_number == 0))
+	{
+		printf("error");
+	}
+
+	if (((*stack)->next == NULL) && (line_number == 1))
+	{
+		printf("error");
+	}
     ptr = *stack;
 
     while (ptr->next != NULL)
         ptr = ptr->next;
 
     tmp_1 = ptr->prev;
-    
-    num1 = ptr->n;
-    num2 = tmp_1->n;
+	tmp_2 = tmp_1->prev;
+	/*ptr -> elemento final*/
+	/*tmp_1 -> elemeto anterior al final*/
 
-    ptr->n = num2;
-    tmp_1->n = num1;
+	tmp_2->next = ptr;
+	ptr->prev = tmp_2;
+	ptr->next = tmp_1;
+	tmp_1->prev = ptr;
+	tmp_1->next = NULL;
+    /**/
+    /*num1 = ptr->n;*/
+    /*num2 = tmp_1->n;*/
+
+    /*ptr->n = num2;*/
+    /*tmp_1->n = num1;*/
+	/**/
+
 }
 
 void _add(stack_t **stack, unsigned int line_number __attribute__((unused)))
 {
 	stack_t *ptr = NULL;
 	stack_t *tmp_1 = NULL;
-	int num1 = 0;
-	int num2 = 0;
-	int sum = 0;
+	/*int num1 = 0;*/
+	/*int num2 = 0;*/
+	/*int sum = 0;*/
 	ptr = *stack;
 
 	if (stack == NULL)
@@ -157,13 +178,13 @@ void _add(stack_t **stack, unsigned int line_number __attribute__((unused)))
 	{
 		tmp_1 = ptr->prev;
 
-		num1 = ptr->n;
-		num2 = tmp_1->n;
-		sum = num1 + num2;
+		/*num1 = ptr->n;*/
+		/*num2 = tmp_1->n;*/
+		/*sum = num1 + num2;*/
 
-		tmp_1->n = sum;
+		tmp_1->n += ptr->n;
 		tmp_1->next = NULL;
-		free(ptr);
+		free_stack(ptr);
 		var.stack_len--;
 	}
 	else
