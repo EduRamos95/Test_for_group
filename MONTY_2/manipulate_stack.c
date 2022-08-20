@@ -92,27 +92,28 @@ void _pint(stack_t **stack, unsigned int line_number __attribute__((unused)))
 
 void _pop(stack_t **stack, unsigned int line_number __attribute__((unused)))
 {
-    stack_t *ptr;
+	stack_t *ptr;
 	stack_t *tmp;
-    ptr = *stack;
-	if ((*stack == NULL) || (var.stack_len == 0))
+	
+	if ((stack == NULL) || (*stack == NULL) || (var.stack_len == 0))
 		return;
-    while (ptr->next != NULL)
-        ptr = ptr->next;
-    /*elemento final*/
+	ptr = *stack;
+	while (ptr->next != NULL)
+		ptr = ptr->next;
+	/*elemento final*/
 	if(ptr->prev != NULL)
 	{
 		tmp = ptr->prev;
-		(*stack) = tmp;
-		tmp->next = NULL;
 		free_stack(ptr);
+		ptr = tmp;
+		tmp->next = NULL;
+		/*free_stack(ptr);*/
 	}
 	if ((ptr->prev == NULL) && var.stack_len == 1)
 	{
 		free_stack(ptr);
 		(*stack) = NULL;
 	}
-	
 	var.stack_len--;
 }
 

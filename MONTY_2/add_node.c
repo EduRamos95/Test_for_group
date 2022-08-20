@@ -13,6 +13,9 @@
 stack_t *add_node_end(stack_t **stack, const int n)
 {
 	stack_t *new;
+	stack_t *ptr;
+
+	ptr = *stack;
 
 	if (stack == NULL)
 		return (NULL);
@@ -27,11 +30,13 @@ stack_t *add_node_end(stack_t **stack, const int n)
 	}
 	else
 	{
-		(*stack)->next = new;
-		new->prev = (*stack);
+		while (ptr->next != NULL)
+			ptr = ptr->next;
+		ptr->next = new;
+		new->prev = ptr;
 		new->next = NULL;
 	}
-	if (var.queue == STACK || var.stack_len == 0)
-		*stack = new;
+	if (var.queue == STACK && var.stack_len == 0)
+		(*stack) = new;
 	return (new);
 }

@@ -43,9 +43,10 @@ int main(int argc, char *argv[])
 		op = strtok(lineptr, "\n\t\r ");
 		if (op != NULL && op[0] != '#')
 		{
-			get_opc(op, &stack_top, line_number);
+			get_opc(op, &stack, line_number);
 		}
-		stack = first_node(&stack_top);
+		/*stack = first_node(&stack_top);*/
+		stack_top = last_node(&stack);
 		if(var.stack_len == 1)
 		{
 			stack = stack_top;
