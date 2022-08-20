@@ -1,8 +1,8 @@
 #include "monty.h"
 
 /**
- * add_node - add a new node to a circular linked list
- * @stack: double pointer to the beginning of the circular linked list
+ * add_node_end - add a new node to a doble linked list
+ * @stack: double pointer to the beginning of the double linked list
  * @n: value to add to the new node
  *
  * Description: the function will add the node to the begining if in

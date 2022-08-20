@@ -34,7 +34,7 @@ void _push(stack_t **stack, unsigned int line_number)
 	arg = strtok(NULL, "\n\t\r ");
 	if (arg == NULL || check_for_digit(arg))
 	{
-		dprintf(STDOUT_FILENO,
+		fprintf(stderr,
 			"L%u: usage: push integer\n",
 			line_number);
 		exit(EXIT_FAILURE);
@@ -42,7 +42,7 @@ void _push(stack_t **stack, unsigned int line_number)
 	n = atoi(arg);
 	if (!add_node_end(stack, n))
 	{
-		dprintf(STDOUT_FILENO, "Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	var.stack_len++;
@@ -79,10 +79,16 @@ void _pall(stack_t **stack, unsigned int line_number __attribute__((unused)))
     print_stack_t(print_all);
 }
 
-void _pint(stack_t **stack, unsigned int line_number __attribute__((unused)))
+void _pint(stack_t **stack, unsigned int line_number)
 {
     stack_t *ptr;
     ptr = *stack;
+
+	if((*stack) == NULL)
+	{
+		fprintf(stderr,"L%u: can't pint, stack empty\n",line_number);
+		exit(EXIT_FAILURE);
+	}
 
     while (ptr->next != NULL)
         ptr = ptr->next;
@@ -90,13 +96,16 @@ void _pint(stack_t **stack, unsigned int line_number __attribute__((unused)))
     printf("%d\n", ptr->n);
 }
 
-void _pop(stack_t **stack, unsigned int line_number __attribute__((unused)))
+void _pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *ptr;
 	stack_t *tmp;
 	
 	if ((stack == NULL) || (*stack == NULL) || (var.stack_len == 0))
-		return;
+	{
+		fprintf(stderr,"L%u: can't pop an empty stack\n",line_number);
+		exit(EXIT_FAILURE);
+	}
 	ptr = *stack;
 	while (ptr->next != NULL)
 		ptr = ptr->next;
@@ -125,14 +134,16 @@ void _swap(stack_t **stack, unsigned int line_number __attribute__((unused)))
     /*int num1 = 0;*/
     /*int num2 = 0;*/
 
-	if ((*stack == NULL) && (line_number == 0))
+	if ((*stack == NULL) && (var.stack_len == 0))
 	{
-		printf("error");
+		fprintf(stderr,"L%u: can't swap, stack too short\n",line_number);
+		exit(EXIT_FAILURE);
 	}
 
-	if (((*stack)->next == NULL) && (line_number == 1))
+	if (((*stack)->next == NULL) && (var.stack_len == 1))
 	{
-		printf("error");
+		fprintf(stderr,"L%u: can't swap, stack too short\n",line_number);
+		exit(EXIT_FAILURE);
 	}
     ptr = *stack;
 
@@ -168,13 +179,16 @@ void _add(stack_t **stack, unsigned int line_number __attribute__((unused)))
 	/*int sum = 0;*/
 	ptr = *stack;
 
-	if (stack == NULL)
-		return;
+	if (*stack == NULL || var.stack_len <= 1)
+	{
+		fprintf(stderr,"L%u: can't add, stack too short\n",line_number);
+		exit(EXIT_FAILURE);
+	}
 
 	while (ptr->next != NULL)
 		ptr = ptr->next;
 
-	if (var.stack_len >= 2)
+	if (((ptr->prev)->prev == NULL) || var.stack_len >= 2)
 	{
 		tmp_1 = ptr->prev;
 
@@ -189,12 +203,13 @@ void _add(stack_t **stack, unsigned int line_number __attribute__((unused)))
 	}
 	else
 	{
-		return;
+		fprintf(stderr,"L%u: can't add, stack too short\n",line_number);
+		exit(EXIT_FAILURE);
 	}
 }
 
 void _nop(stack_t **stack __attribute__((unused)), unsigned int line_number __attribute__((unused)))
 {	
-	printf("::nada::");
+	/*printf("::nada::");*/
 	return;
 }
