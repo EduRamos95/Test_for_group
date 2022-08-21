@@ -1,23 +1,22 @@
-# **0x18. C - Stacks, Queues - LIFO, FIFO aka monty**
+# C - Stacks, Queues - LIFO, FIFO aka monty**
 
-![monty](https://pbs.twimg.com/media/CFYYWy6UEAE9Ow-.png)
+[![montyy.jpg](https://i.postimg.cc/KYs2cGKj/montyy.jpg)](https://postimg.cc/QB5P0rJZ)
 
 **About**
 
-	Monty is a bytecode interpreter that David Kwan and I built for Holberton 
-	project 0x18 C - Stacks, Queues - LIFO, FIFO.
+	Monty is a bytecode interpreter that Franco Cardenas and I built for Holberton 
+	project: C - Stacks, Queues - LIFO, FIFO.
 
 **Resources**
 
 	* Google
 	* How do I use extern to share variables between source files in C?
-	* Working with submodules
 
 **Requirements**
+** GENERAL **
 
     * Allowed editors: vi, vim, emacs
-    * All your files will be compiled on Ubuntu 14.04 LTS
-    * Your programs and functions will be compiled with gcc 4.8.4 using the flags -Wall -Werror -Wextra and -pedantic
+    * All your files will be compiled on Ubuntu 20.04 LTS using gcc, using the options -Wall -Werror -Wextra -pedantic
     * All your files should end with a new line
     * A README.md file, at the root of the folder of the project is mandatory
     * Your code should use the Betty style. It will be checked using betty-style.pl and betty-doc.pl
@@ -28,15 +27,29 @@
     * Don’t forget to push your header file
     * All your header files should be include guarded
     * You are expected to do the tasks in the order shown in the project
-    * The repository monty should be added as a submodule to your
-    holbertonschool-low_level_programming repository, under the name 0x18-stacks_queues_lifo_fifo
 
-**Git submodules**
-      * Git allows you to include other Git repositories called submodules into
-       a repository.
-      * Submodules allow you to keep projects in separate repositories but still
-      be able to reference them as folders in the working directory of other
-      repositories.
+**GitHub**
+
+      * There should be one project repository per group. If you clone/fork/whatever a project repository with the same name before the second deadline, you risk a 0% score.
+
+**MORE INFO**
+**Data Structures**
+
+      * Please use the following data structures for this project. Don’t forget to include them in your header file.
+
+**Compilation & Output**
+      
+      * Your code will be compiled this way:
+      ```
+      gcc -Wall -Werror -Wextra -pedantic *.c -o monty
+      ```
+      * Any output must be printed on stdout
+      * Any error message must be printed on stderr
+      	* Here is a link to a GitHub repository that could help you making sure your errors are printed on stderr.
+
+**Tests**
+      
+      * We strongly encourage you to work all together on a set of tests.
 
 **The Monty Language**
 
@@ -75,24 +88,7 @@
 	* swap - The opcode swap swaps the top two elements of the stack.
 	* add - The opcode add adds the top two elements of the stack.
 	* nop - The opcode nop doesn’t do anything.
-	* sub - The opcode sub subtracts the top element of the stack from the
-	second top element of the stack.
-	* div - The opcode div divides the second top element of the stack by
-	the top element of the stack.
-	* mul - The opcode mul multiplies the second top element of the stack
-	with the top element of the stack.
-	* mod - The opcode mod computes the rest of the division of the second
-	top element of the stack by the top element of the stack.
-	* comments - When the first non-space character of a line is #, treat
-	this line as a comment (don’t do anything).
-	* pchar - The opcode pchar prints the char at the top of the stack,
-	followed by a new line.
-	* pstr -  The opcode pstr prints the string starting at the top of the
-	stack, followed by a new line.
-	* rotl - The opcode rotl rotates the stack to the top.
-	* rotr - The opcode rotr rotates the stack to the bottom.
-	* stack - The opcode stack sets the format of the data to a stack (LIFO). 
-	This is the default behavior of the program.
-	* queue - The opcode queue sets the format of the data to a queue (FIFO).
-
+	
 **Authors:**
+** Franco Cardenas **
+** Edu Ramos **
