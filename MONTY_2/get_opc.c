@@ -1,16 +1,15 @@
 #include "monty.h"
 
 /**
- * get_op - check op against valid opcodes
+ * get_opc - check op against valid opcodes
  * @op: op to check
  * @stack: double pointer to the beginnig of the stack
- * @line_number: script line number
- *
- * Return: void
+ * @line_number: number file line
  */
 void get_opc(char *op, stack_t **stack, unsigned int line_number)
 {
 	size_t i;
+
 	instruction_t valid_ops[] = {
 		{"push", _push},
 		{"pall", _pall},
@@ -34,11 +33,5 @@ void get_opc(char *op, stack_t **stack, unsigned int line_number)
 	fprintf(stderr,
 		"L%u: unknown instruction %s\n",
 		line_number, op);
-		if (*stack != NULL)
-		{
-			free_stack(*stack);
-		}
-		free(var.gline);
-		fclose(var.gfs);
-	exit(EXIT_FAILURE);
+	exit_to_free(*stack);
 }
