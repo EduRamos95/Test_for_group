@@ -88,5 +88,5 @@
 	* nop - The opcode nop doesn’t do anything.
 	
 **Authors:**
-** Franco Cardenas **
-** Edu Ramos **
+
+	* Franco Cardenas - Edu Ramos.
