@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # C - Stacks, Queues - LIFO, FIFO
 
 [![montyy.jpg](https://i.postimg.cc/KYs2cGKj/montyy.jpg)](https://postimg.cc/QB5P0rJZ)
@@ -91,6 +90,3 @@
 **Authors:**
 
 	* Franco Cardenas - Edu Ramos.
-=======
-C#
->>>>>>> 2c5ba7f0cae8658a024ae1b4dc85cbcf40396266
