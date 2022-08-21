@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /* global struct to hold flag for queue and stack length */
-var_t var;
+/*var_t var;*/
 
 /**
  * main - Monty bytecode interpreter
@@ -13,7 +13,7 @@ var_t var;
 int main(int argc, char *argv[])
 {
 	stack_t *stack = NULL;
-    stack_t *stack_top = NULL;
+	stack_t *stack_top = NULL;
 	unsigned int line_number = 0;
 	FILE *fs = NULL;
 	char *lineptr = NULL, *op = NULL;
@@ -42,12 +42,12 @@ int main(int argc, char *argv[])
 		if (op != NULL && op[0] != '#')
 			get_opc(op, &stack, line_number);
 		stack_top = last_node(&stack);
-		if(var.stack_len == 1)
+		if (var.stack_len == 1)
 			stack = stack_top;
 	}
 	free(lineptr);
-    free_stack(stack);
-    fclose(fs);
-    var.stack_len = 0;
+	free_stack(stack);
+	fclose(fs);
+	var.stack_len = 0;
 	exit(EXIT_SUCCESS);
 }
