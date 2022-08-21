@@ -1,4 +1,14 @@
+
+Project badge
 C - Stacks, Queues - LIFO, FIFO
+ Master
+ By: Julien Barbier
+ Weight: 2
+ Project to be done in teams of 2 people (your team: Juan Carlos Garay, Franco Cardenas, Edu Ramos)
+ Your score will be updated once you launch the project review.
+
+
+
 Resources
 Read or watch:
 
@@ -92,7 +102,7 @@ pall$
 julien@ubuntu:~/monty$
 Monty byte code files can contain blank lines (empty or made of spaces only, and any additional text after the opcode or its required argument is not taken into account:
 
-@ubuntu:~/monty$ cat -e bytecodes/001.m
+julien@ubuntu:~/monty$ cat -e bytecodes/001.m
 push 0 Push 0 onto the stack$
 push 1 Push 1 onto the stack$
 $
@@ -108,4 +118,4 @@ $
       push    6        $
 $
 pall This is the end of our program. Monty is awesome!$
-@ubuntu:~/monty$
+julien@ubuntu:~/monty$
