@@ -1,5 +1,21 @@
 #include "monty.h"
+/**
+ * free_to_exit - free all mallocs
+ * @head: head of stack
+ */
+void free_to_exit(stack_t *head)
+{
+	free_stack(head);
+	free(var.gline);
+	fclose(var.gfs);
+	exit(EXIT_FAILURE);
+}
 
+/**
+ * _pop - remove top element from stack
+ * @stack: head of stack
+ * @line_number: number file line
+ */
 void _pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *ptr;
@@ -7,24 +23,19 @@ void _pop(stack_t **stack, unsigned int line_number)
 
 	if ((stack == NULL) || (*stack == NULL) || (var.stack_len == 0))
 	{
-		fprintf(stderr,"L%u: can't pop an empty stack\n",line_number);
-		free(var.gline);
-		fclose(var.gfs);
-		exit(EXIT_FAILURE);
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
+		free_to_exit(*stack);
 	}
 	ptr = *stack;
-
 	while (ptr->next != NULL)
 		ptr = ptr->next;
-
-	if(ptr->prev != NULL)
+	if (ptr->prev != NULL)
 	{
 		tmp = ptr->prev;
 		free_stack(ptr);
 		ptr = tmp;
 		ptr->next = NULL;
 	}
-
 	if ((ptr->prev == NULL) && var.stack_len == 1)
 	{
 		free_stack(ptr);
@@ -33,41 +44,29 @@ void _pop(stack_t **stack, unsigned int line_number)
 	var.stack_len--;
 }
 
+/**
+ * _swap - swap the top 2 elements of stack
+ * @stack: head of stack
+ * @line_number: number file line
+ */
 void _swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *ptr = NULL;
 	stack_t *tmp_1 = NULL;
 	stack_t *tmp_2 = NULL;
 
-	if ((*stack == NULL) && (var.stack_len == 0))
+	if (var.stack_len < 2)
 	{
-		fprintf(stderr,"L%u: can't swap, stack too short\n",line_number);
-		free(var.gline);
-		fclose(var.gfs);
-		exit(EXIT_FAILURE);
-	}
-
-	if (((*stack)->next == NULL) && (var.stack_len == 1))
-	{
-		fprintf(stderr,"L%u: can't swap, stack too short\n",line_number);
-		if (*stack != NULL)
-		{
-			free_stack(*stack);
-		}
-		free(var.gline);
-		fclose(var.gfs);
-		exit(EXIT_FAILURE);
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+		free_to_exit(*stack);
 	}
 	ptr = *stack;
-
 	while (ptr->next != NULL)
 		ptr = ptr->next;
-
 	if (var.stack_len >= 3)
 	{
 		tmp_1 = ptr->prev;
 		tmp_2 = tmp_1->prev;
-
 		tmp_2->next = ptr;
 		ptr->prev = tmp_2;
 		ptr->next = tmp_1;
@@ -79,47 +78,36 @@ void _swap(stack_t **stack, unsigned int line_number)
 		tmp_1 = malloc(sizeof(stack_t));
 		if (tmp_1 == NULL)
 		{
-			tmp_2 = malloc(sizeof(stack_t));
-			if (tmp_2 == NULL)
-			{
-				fprintf(stderr,"error de malloc\n");
-				exit(EXIT_FAILURE);
-			}
-			tmp_1 = tmp_2;
-			tmp_2 = NULL;
+			fprintf(stderr, "error de malloc\n");
+			free_to_exit(*stack);
 		}
 		tmp_1->prev = (*stack)->prev;
 		tmp_1->next = (*stack);
-
 		(*stack)->prev = ptr;
 		(*stack)->next = NULL;
-
 		ptr->next = tmp_1->next;
 		ptr->prev = tmp_1->prev;
-
 		tmp_1->next = NULL;
 		free_stack(tmp_1);
-
 		(*stack) = ptr;
 	}
 }
 
-void _add(stack_t **stack, unsigned int line_number __attribute__((unused)))
+/**
+ * _add - adds the top 2 elements to the stack
+ * @stack: head of stack
+ * @line_number: number file line
+ */
+void _add(stack_t **stack, unsigned int line_number)
 {
 	stack_t *ptr = NULL;
 	stack_t *tmp_1 = NULL;
-	ptr = *stack;
 
+	ptr = *stack;
 	if (*stack == NULL || var.stack_len <= 1)
 	{
-		fprintf(stderr,"L%u: can't add, stack too short\n",line_number);
-		if (*stack != NULL)
-		{
-			free_stack(*stack);
-		}
-		free(var.gline);
-		fclose(var.gfs);
-		exit(EXIT_FAILURE);
+		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
+		free_to_exit(*stack);
 	}
 
 	while (ptr->next != NULL)
@@ -135,19 +123,17 @@ void _add(stack_t **stack, unsigned int line_number __attribute__((unused)))
 	}
 	else
 	{
-		fprintf(stderr,"L%u: can't add, stack too short\n",line_number);
-		if (*stack != NULL)
-		{
-			free_stack(*stack);
-		}
-		free(var.gline);
-		fclose(var.gfs);
-		exit(EXIT_FAILURE);
+		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
+		free_to_exit(*stack);
 	}
 }
 
-void _nop(stack_t **stack __attribute__((unused)), unsigned int line_number __attribute__((unused)))
-{	
-	/*printf("::nada::");*/
-	return;
+/**
+ * _nop - does nothing
+ * @stack: head of the stack
+ * @line_number: number file line
+ */
+void _nop(stack_t **stack __attribute__((unused))
+		, unsigned int line_number __attribute__((unused)))
+{
 }
