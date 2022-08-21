@@ -1,7 +1,8 @@
-# C - Stacks, Queues - LIFO, FIFO aka monty**
+# ** C - Stacks, Queues - LIFO, FIFO **
 
 [![montyy.jpg](https://i.postimg.cc/KYs2cGKj/montyy.jpg)](https://postimg.cc/QB5P0rJZ)
 
+[![montyy.jpg](https://i.postimg.cc/KYs2cGKj/montyy.jpg)](https://postimg.cc/QB5P0rJZ)
 **About**
 
 	Monty is a bytecode interpreter that Franco Cardenas and I built for Holberton 
