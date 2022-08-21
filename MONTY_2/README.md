@@ -1,4 +1,4 @@
-# ** C - Stacks, Queues - LIFO, FIFO **
+# C - Stacks, Queues - LIFO, FIFO
 
 [![montyy.jpg](https://i.postimg.cc/KYs2cGKj/montyy.jpg)](https://postimg.cc/QB5P0rJZ)
 
