@@ -63,25 +63,31 @@ typedef struct instruction_s
 
 extern char **environ;
 
-/*void (*get_opc(char *command))(stack_t **stack, unsigned int line_number);*/
-int verify_token(char *token);
-
-/*mandatory functions*/
+/*manipulate_stack.c*/
+static int check_for_digit(char *arg);
 void _push(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int line_number);
 void _pint(stack_t **stack, unsigned int line_number);
+void print_stack_t(stack_t *head);
+
+/*add_node_end.c*/
+stack_t *add_node_end(stack_t **stack, const int n);
+
+/*manipulate_stack2.c*/
 void _pop(stack_t **stack, unsigned int line_number);
 void _swap(stack_t **stack, unsigned int line_number);
 void _add(stack_t **stack, unsigned int line_number);
 void _nop(stack_t **stack, unsigned int line_number);
+void free_to_exit(stack_t *head);
 
-/*node_manipulate.c*/
-void print_stack_t(stack_t *head);
-stack_t *add_node_end(stack_t **stack, const int n);
-/*free_dlist.c*/
+/*free_dl.c*/
 void free_stack(stack_t *head);
 
+/*get_opc*/
 void get_opc(char *op, stack_t **stack, unsigned int line_number);
+
+/**last_node.c*/
 stack_t *last_node(stack_t **stack);
 stack_t *first_node(stack_t **stack);
+
 #endif
