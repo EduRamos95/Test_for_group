@@ -64,7 +64,7 @@ typedef struct instruction_s
 extern char **environ;
 
 /*manipulate_stack.c*/
-static int check_for_digit(char *arg);
+/*static int check_for_digit(char *arg);*/
 void _push(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int line_number);
 void _pint(stack_t **stack, unsigned int line_number);
