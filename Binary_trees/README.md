@@ -96,25 +96,25 @@ This function is used only for visualization purposes. You don’t have to push 
 # Tasks
 Task mandatory | Description
 ---|---
-[x] 0. New node | Write a function that creates a binary tree node
-[x] 1. Insert left | Write a function that inserts a node as the left-child of another node
-[x] 2. Insert right | Write a function that inserts a node as the right-child of another node
-[x] 3. Delete | Write a function that deletes an entire binary tree
-[x] 4. Is leaf | Write a function that checks if a node is a leaf
-[x] 5. Is root | Write a function that checks if a given node is a root
-[x] 6. Pre-order traversal | Write a function that goes through a binary tree using pre-order traversal
-[x] 7. In-order traversal | Write a function that goes through a binary tree using in-order traversal
-[x] 8. Post-order traversal | Write a function that goes through a binary tree using post-order traversal
-[x] 9. Height | Write a function that measures the height of a binary tree
-[x] 10. Depth | Write a function that measures the depth of a node in a binary tree
-[x] 11. Size | Write a function that measures the size of a binary tree
-[x] 12. Leaves | Write a function that counts the leaves in a binary tree
-[x] 13. Nodes | Write a function that counts the nodes with at least 1 child in a binary tree
-[x] 14. Balance factor | Write a function that measures the balance factor of a binary tree
-[x] 15. Is full | Write a function that checks if a binary tree is full
-[x] 16. Is perfect | Write a function that checks if a binary tree is perfect
-[x] 17. Sibling | Write a function that finds the sibling of a node
-[x] 18. Uncle | Write a function that finds the uncle of a node
+[X] 0. New node | Write a function that creates a binary tree node
+[X] 1. Insert left | Write a function that inserts a node as the left-child of another node
+[X] 2. Insert right | Write a function that inserts a node as the right-child of another node
+[X] 3. Delete | Write a function that deletes an entire binary tree
+[X] 4. Is leaf | Write a function that checks if a node is a leaf
+[X] 5. Is root | Write a function that checks if a given node is a root
+[X] 6. Pre-order traversal | Write a function that goes through a binary tree using pre-order traversal
+[X] 7. In-order traversal | Write a function that goes through a binary tree using in-order traversal
+[X] 8. Post-order traversal | Write a function that goes through a binary tree using post-order traversal
+[X] 9. Height | Write a function that measures the height of a binary tree
+[X] 10. Depth | Write a function that measures the depth of a node in a binary tree
+[X] 11. Size | Write a function that measures the size of a binary tree
+[X] 12. Leaves | Write a function that counts the leaves in a binary tree
+[X] 13. Nodes | Write a function that counts the nodes with at least 1 child in a binary tree
+[X] 14. Balance factor | Write a function that measures the balance factor of a binary tree
+[X] 15. Is full | Write a function that checks if a binary tree is full
+[X] 16. Is perfect | Write a function that checks if a binary tree is perfect
+[X] 17. Sibling | Write a function that finds the sibling of a node
+[X] 18. Uncle | Write a function that finds the uncle of a node
 
 ---
 #### Authors:
