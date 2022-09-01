@@ -119,6 +119,6 @@ This function is used only for visualization purposes. You don’t have to push 
 ---
 #### Authors:
 * ##### Edu Ramos: 5162@holbertonstudents.com
-* ##### Julian Zea: (tu codigo)@holbertonstudents.com
+* ##### Julian Zea: 5167@holbertonstudents.com
 
 ---
