@@ -109,7 +109,7 @@ avl_t *sorted_array_to_avl(int *array, size_t size);
 /*task 36*/
 int binary_tree_is_heap(const binary_tree_t *tree);
 /*task 37*/
-heap_t *heap_insert(heap_t **root, int value)
+heap_t *heap_insert(heap_t **root, int value);
 /*task 38*/
 heap_t *array_to_heap(int *array, size_t size);
 /*task 39*/
