@@ -96,7 +96,7 @@ This function is used only for visualization purposes. You don’t have to push 
 # Tasks
 Task mandatory | Description
 ---|---
-- [x] 0. New node | Write a function that creates a binary tree node
+- [x] 0. New node || Write a function that creates a binary tree node
 - [X] 1. Insert left | Write a function that inserts a node as the left-child of another node
 - [X] 2. Insert right | Write a function that inserts a node as the right-child of another node
 - [X] 3. Delete | Write a function that deletes an entire binary tree
