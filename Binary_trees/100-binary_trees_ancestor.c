@@ -50,4 +50,49 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 		com1_parent = com1_parent->parent;
 	}
 	return (tmp_common_parent);
+
 }
+
+/* iterative...
+binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
+				     const binary_tree_t *second)
+{
+	binary_tree_t *tmp;
+
+	if (first == NULL || second == NULL)
+		return (NULL);
+	tmp = (binary_tree_t *)second;
+	while (first)
+	{
+		while (second)
+		{
+			if (first == second)
+				return ((binary_tree_t *)first);
+			second = second->parent;
+		}
+		second = tmp;
+		first = first->parent;
+	}
+	return (NULL);
+}
+*/
+
+/* recursive...
+binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
+		const binary_tree_t *second)
+{
+	binary_tree_t *mom, *pop;
+
+	if (!first || !second)
+		return (NULL);
+	if (first == second)
+		return ((binary_tree_t *)first);
+
+	mom = first->parent, pop = second->parent;
+	if (first == pop || !mom || (!mom->parent && pop))
+		return (binary_trees_ancestor(first, pop));
+	else if (mom == second || !pop || (!pop->parent && mom))
+		return (binary_trees_ancestor(mom, second));
+	return (binary_trees_ancestor(mom, pop));
+}
+*/
