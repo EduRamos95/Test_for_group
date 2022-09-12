@@ -116,6 +116,31 @@ This function is used only for visualization purposes. You don’t have to push 
 - [x] **`17. Sibling`**: *Write a function that finds the sibling of a node*
 - [x] **`18. Uncle`**: *Write a function that finds the uncle of a node*
 
+#### Task advanced
+- [x] **`100-binary_trees_ancestor.c`**: *Write a function that finds the lowest common ancestor of two nodes*
+- [x] **`101-binary_tree_levelorder.c`**: *Write a function that goes through a binary tree using level-order traversal*
+- [x] **`102-binary_tree_is_complete.c`**: *Write a function that checks if a binary tree is complete*
+- [x] **`103-binary_tree_rotate_left.c`**: *Write a function that performs a left-rotation on a binary tree*
+- [x] **`104-binary_tree_rotate_right.c`**: *Write a function that performs a right-rotation on a binary tree*
+- [x] **`110-binary_tree_is_bst.c`**: *Write a function that checks if a binary tree is a valid Binary Search Tree*
+- [x] **`111-bst_insert.c`**: *Write a function that inserts a value in a Binary Search Tree*
+- [x] **`112-array_to_bst.c`**: *Write a function that builds a Binary Search Tree from an array*
+- [x] **`113-bst_search.c`**: *Write a function that searches for a value in a Binary Search Tree*
+- [x] **`114-bst_remove.c`**: *Write a function that removes a node from a Binary Search Tree*
+- [x] **`115-O`**: *What are the average time complexities of those operations on a Binary Search Tree*
+- [x] **`120-binary_tree_is_avl.c`**: *Write a function that checks if a binary tree is a valid AVL Tree*
+- [x] **`121-avl_insert.c`**: *Write a function that inserts a value in an AVL Tree*
+- [x] **`122-array_to_avl.c`**: *Write a function that builds an AVL tree from an array*
+- [x] **`123-avl_remove.c`**: *Write a function that removes a node from an AVL tree*
+- [x] **`124-sorted_array_to_avl.c`**: *Write a function that builds an AVL tree from an array*
+- [x] **`125-O`**: *What are the average time complexities of those operations on an AVL Tree*
+- [x] **`130-binary_tree_is_heap.c`**: *Write a function that checks if a binary tree is a valid Max Binary Heap*
+- [x] **`131-heap_insert.c`**: *Write a function that inserts a value in Max Binary Heap*
+- [x] **`132-array_to_heap.c`**: *Write a function that builds a Max Binary Heap tree from an array*
+- [x] **`133-heap_extract.c`**: *Write a function that extracts the root node of a Max Binary Heap*
+- [x] **`134-heap_to_sorted_array.c`**: *Write a function that converts a Binary Max Heap to a sorted array of integers*
+- [x] **`135-O`**: *What are the average time complexities of those operations on a Binary Heap*
+
 ---
 #### Authors:
 * ##### Edu Ramos: 5162@holbertonstudents.com
