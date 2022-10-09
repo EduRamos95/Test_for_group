@@ -1,0 +1,3 @@
+[submodule "holbertonschool-sorting_algorithms"]
+	path = holbertonschool-sorting_algorithms
+	url = https://github.com/EduRamos95/holbertonschool-sorting_algorithms.git
